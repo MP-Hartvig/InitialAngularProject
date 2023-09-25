@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AuthenticationService } from 'src/services/authentication.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'InitialAngularProject';
+  title = 'Angular movie project';
+  isLoggedIn$: Observable<boolean>;
+
+  constructor(private authService: AuthenticationService) {
+    this.isLoggedIn$ = this.authService.loggedIn$;
+  }
+
+  Logout() {
+    this.authService.removeToken();
+  }
 }

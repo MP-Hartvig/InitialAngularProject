@@ -1,1 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+//#region Mat card styling
+.outerCard {
+  padding-bottom: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  width:98%;
+  background-color: transparent;
+  padding-top: 10px;
+}
+
+.cardMargin {
+  padding-top: 10px;
+  padding-bottom: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.matCardWidth {
+  width: 98%;
+  min-width: 98%;
+  max-width: 98%;
+}
+//#endregion
