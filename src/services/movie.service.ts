@@ -25,4 +25,34 @@ export class MovieService {
       this.movieSubject$.next(x);
     });
   };
+
+  createMovie(movie: Movie) {
+    const headers = this.setHttpHeader.setAuthHeader();
+    const httpOptions = {
+      headers: headers
+    };
+    this.httpClient.post<Movie[]>(this.url, movie, httpOptions).subscribe(x => {
+      this.movieSubject$.next(x);
+    });
+  };
+
+  updateMovie(movie: Movie) {
+    const headers = this.setHttpHeader.setAuthHeader();
+    const httpOptions = {
+      headers: headers
+    };
+    this.httpClient.put<Movie[]>(this.url, movie, httpOptions).subscribe(x => {
+      this.movieSubject$.next(x);
+    });
+  };
+
+  deleteMovie(movie: Movie) {
+    const headers = this.setHttpHeader.setAuthHeader();
+    const httpOptions = {
+      headers: headers
+    };
+    this.httpClient.delete<Movie[]>(this.url + '/' + movie.id, httpOptions).subscribe(x => {
+      this.movieSubject$.next(x);
+    });
+  };
 };

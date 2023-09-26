@@ -4,12 +4,16 @@
 
     <h3>Movie list</h3>
 
+    <button mat-icon-button style="margin: 20px;" (click)="CreateMovie()"><mat-icon>add</mat-icon></button>
+
     <table>
       <thead>
         <tr>
           <th>Id</th>
           <th>Title</th>
           <th>Release date</th>
+          <th>Edit</th>
+          <th>Delete</th>
         </tr>
       </thead>
       <tbody>
@@ -22,6 +26,13 @@
           </td>
           <td>
             {{movie.releaseDate}}
+          </td>
+          <td>
+            <button mat-icon-button (click)="EditMovie(movie)"><mat-icon>edit</mat-icon></button>
+          </td>
+          <td>
+            <button mat-icon-button (click)="DeleteMovie(movie)"><mat-icon>delete</mat-icon></button>
+
           </td>
         </tr>
       </tbody>

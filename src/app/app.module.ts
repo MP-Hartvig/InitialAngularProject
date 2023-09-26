@@ -54,13 +54,15 @@ import { MoviePageComponent } from './components/movie-page/movie-page.component
 
 // Custom
 import { SetHttpHeader } from './utility/set-http-header';
+import { UpsertMovieComponent } from './components/upsert-movie/upsert-movie.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginPageComponent,
     HomePageComponent,
-    MoviePageComponent
+    MoviePageComponent,
+    UpsertMovieComponent
   ],
   imports: [
     BrowserModule,
