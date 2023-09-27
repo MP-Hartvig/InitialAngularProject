@@ -27,11 +27,7 @@ export class MovieService {
   };
 
   createMovie(movie: Movie) {
-    const headers = this.setHttpHeader.setAuthHeader();
-    const httpOptions = {
-      headers: headers
-    };
-    this.httpClient.post<Movie[]>(this.url, movie, httpOptions).subscribe(x => {
+    this.httpClient.post<Movie[]>(this.url, movie, {headers: this.setHttpHeader.setAuthHeader()},).subscribe(x => {
       this.movieSubject$.next(x);
     });
   };

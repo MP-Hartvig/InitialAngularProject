@@ -18,9 +18,5 @@ export class AppComponent {
 
   Logout() {
     this.authService.removeToken();
-
-    this.router.navigateByUrl("/test", {state: { data: this.title }});
-
-    this.router.getCurrentNavigation()?.extras.state!['data'];
   }
 }
