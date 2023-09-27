@@ -55,6 +55,7 @@ import { MoviePageComponent } from './components/movie-page/movie-page.component
 // Custom
 import { SetHttpHeader } from './utility/set-http-header';
 import { UpsertMovieComponent } from './components/upsert-movie/upsert-movie.component';
+import { NumberDecimalPipe } from './pipes/number-decimal.pipe';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { UpsertMovieComponent } from './components/upsert-movie/upsert-movie.com
     LoginPageComponent,
     HomePageComponent,
     MoviePageComponent,
-    UpsertMovieComponent
+    UpsertMovieComponent,
+    NumberDecimalPipe
   ],
   imports: [
     BrowserModule,

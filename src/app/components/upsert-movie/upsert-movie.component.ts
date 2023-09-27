@@ -28,7 +28,6 @@ export class UpsertMovieComponent {
 
   submitMovie() {
     this.movie = { id: this.movie.id, title: this.title.value!, releaseDate: this.releaseDate.value?.toLocaleString("en-DK").slice(0, 10)!};
-    console.log(this.data)
     this.data != null ? this.movieService.updateMovie(this.movie) : this.movieService.createMovie(this.movie);
     this.matDialogRef.close();
   };
