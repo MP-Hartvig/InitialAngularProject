@@ -1,5 +1,5 @@
 // Regular modules
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { LayoutModule } from '@angular/cdk/layout';
@@ -56,6 +56,8 @@ import { MoviePageComponent } from './components/movie-page/movie-page.component
 import { SetHttpHeader } from './utility/set-http-header';
 import { UpsertMovieComponent } from './components/upsert-movie/upsert-movie.component';
 import { NumberDecimalPipe } from './pipes/number-decimal.pipe';
+import { AdminPageComponent } from './components/admin-page/admin-page.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [
@@ -64,7 +66,8 @@ import { NumberDecimalPipe } from './pipes/number-decimal.pipe';
     HomePageComponent,
     MoviePageComponent,
     UpsertMovieComponent,
-    NumberDecimalPipe
+    NumberDecimalPipe,
+    AdminPageComponent
   ],
   imports: [
     BrowserModule,
@@ -109,6 +112,12 @@ import { NumberDecimalPipe } from './pipes/number-decimal.pipe';
     MatSlideToggleModule,
     MatSliderModule,
     HttpClientModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
   ],
   providers: [
     DecimalPipe,

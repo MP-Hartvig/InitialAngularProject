@@ -11,9 +11,11 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'Angular movie project';
   isLoggedIn$: Observable<boolean>;
+  admin$: Observable<boolean>;
 
   constructor(private authService: AuthenticationService, private router: Router) {
     this.isLoggedIn$ = this.authService.loggedIn$;
+    this.admin$ = this.authService.admin$;
   }
 
   Logout() {

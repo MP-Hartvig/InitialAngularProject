@@ -16,6 +16,9 @@ export class AuthenticationService {
   private loggedInSubject$: Subject<boolean> = new BehaviorSubject<boolean>(false);
   loggedIn$: Observable<boolean> = this.loggedInSubject$.asObservable();
 
+  private adminSubject$: Subject<boolean> = new BehaviorSubject<boolean>(false);
+  admin$: Observable<boolean> = this.adminSubject$.asObservable();
+
   constructor(private httpClient: HttpClient) { };
 
   getToken(login: Login) {
@@ -27,7 +30,7 @@ export class AuthenticationService {
   removeToken() {
     sessionStorage.removeItem("token");
     this.loggedInSubject$.next(false);
-  }
+  };
 
   register(login: Login) {
     this.httpClient.post<Token>(this.url + this.registerEndpoint, login).subscribe(x => {
@@ -38,7 +41,16 @@ export class AuthenticationService {
   checkResponse(x: Token) {
     if (x.tokenString != null || x.tokenString != undefined) {
       sessionStorage.setItem("token", x.tokenString);
+
       this.loggedInSubject$.next(true);
-    }
-  }
+
+      let claims: Claims = JSON.parse(atob(x.tokenString.split('.')[1]));
+
+      console.log(claims.role);
+
+      if (claims.role == 'Admin') {
+        this.adminSubject$.next(true);
+      };
+    };
+  };
 };

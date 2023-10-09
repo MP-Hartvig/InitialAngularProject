@@ -1,7 +1,8 @@
 <mat-drawer-container class="example-container" autosize>
   <mat-drawer #drawer class="example-sidenav" mode="side">
-    <button routerLink="/" mat-raised-button><mat-icon>home</mat-icon></button>
-    <button *ngIf="isLoggedIn$ | async" routerLink="/Movies" mat-raised-button><mat-icon>list</mat-icon></button>
+    <button routerLink="/" mat-raised-button style="display: block;"><mat-icon>home</mat-icon>Home</button>
+    <button *ngIf="isLoggedIn$ | async" routerLink="/Movies" mat-raised-button style="display: block;"><mat-icon>list</mat-icon>Movies</button>
+    <button *ngIf="admin$ | async" routerLink="/Admin" mat-raised-button style="display: block;"><mat-icon>lock</mat-icon>Admin</button>
   </mat-drawer>
 
   <div class="example-sidenav-content" style="display: flex; justify-content: space-between;">
@@ -9,7 +10,7 @@
       <mat-icon>reorder</mat-icon>
     </button>
 
-    <button *ngIf="isLoggedIn$ | async" type="button" mat-button (click)="Logout()" >
+    <button *ngIf="isLoggedIn$ | async" type="button" matTooltip="Press to logout" mat-button (click)="Logout()" >
       <mat-icon>close</mat-icon>
     </button>
   </div>
